@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Weather Forecast</h2>
+        
+        <div class="search-box">
+            <input type="text" id="cityInput" placeholder="Enter city name...">
+            <button onclick="fetchWeather()">Search</button>
+        </div>
+
+        <div id="result" style="display: none;">
+            <div id="resCity"></div>
+            <div id="resTemp"></div>
+            <div id="resDesc"></div>
+            <div id="resHum"></div>
+        </div>
+        
+        <p id="errorMsg" class="error"></p>
+    </div>
+
+    <script>
+        async function fetchWeather() {
+            const city = document.getElementById('cityInput').value;
+            const resultDiv = document.getElementById('result');
+            const errorMsg = document.getElementById('errorMsg');
+
+            if (!city) return;
+
+            try {
+                errorMsg.innerText = "";
+                const response = await axios.get(`/api/weather?city=${city}`);
+                const data = response.data;
+
+                document.getElementById('resCity').innerText = data.name;
+                document.getElementById('resTemp').innerText = data.temp + "°C";
+                document.getElementById('resDesc').innerText = data.desc;
+                document.getElementById('resHum').innerText = "Humidity: " + data.humidity + "%";
+                
+                resultDiv.style.display = 'block';
+            } catch (err) {
+                resultDiv.style.display = 'none';
+                errorMsg.innerText = "City not found. Please try again.";
+            }
+        }
+    </script>
+</body>
+</html>

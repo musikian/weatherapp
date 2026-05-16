@@ -1,0 +1,114 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    color: #333;
+}
+
+/* Glassmorphism Container */
+.container {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 380px;
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: 1.5rem;
+    color: #1e3c72;
+    font-size: 1.8rem;
+}
+
+/* Input Section */
+.search-box {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 1.5rem;
+}
+
+input {
+    flex: 1;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+input:focus {
+    border-color: #2a5298;
+}
+
+button {
+    padding: 12px 18px;
+    background: #2a5298;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #1e3c72;
+}
+
+/* Weather Result Display */
+#result {
+    background: #f0f4f8;
+    padding: 20px;
+    border-radius: 15px;
+    margin-top: 10px;
+    animation: slideUp 0.4s ease-out;
+}
+
+#resCity {
+    font-size: 1.1rem;
+    color: #666;
+    font-weight: 500;
+}
+
+#resTemp {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: #111;
+    margin: 5px 0;
+}
+
+#resDesc {
+    text-transform: capitalize;
+    font-size: 1.1rem;
+    color: #444;
+    margin-bottom: 8px;
+}
+
+#resHum {
+    color: #777;
+    font-size: 0.9rem;
+}
+
+.error {
+    color: #d63031;
+    margin-top: 15px;
+    font-weight: 500;
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
